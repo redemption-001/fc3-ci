@@ -8,6 +8,5 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           go-version-file: "go.mod"
-      - run: cd src
-      - run: go test
-      - run: go run math.go
+      - run: go test ./...
+      - run: go run ./src/math.go
