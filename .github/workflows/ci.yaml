@@ -6,10 +6,13 @@ on:
 jobs:
   check-application:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: ["1.14", "1.15", "1.18"]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v3
         with:
-          go-version-file: "go.mod"
+          go-version: ${{matrix.go}}
       - run: go test ./...
       - run: go run ./src/math.go
